@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion, easeInOut } from 'framer-motion'
 import { useFollowCursor } from '../hooks/useFollowCursor'
 
 type Mood = 'idle' | 'excited' | 'cunning' | 'sarcastic' | 'curious' | 'angry' | 'happy'
@@ -9,43 +9,43 @@ const moodVariants = {
     rotate: [0, 1.8, -1.8, 0],
     y: [0, -6, 0],
     scale: 1,
-    transition: { duration: 5, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 5, ease: easeInOut, repeat: Infinity }
   },
   excited: {
     rotate: [0, 5, -5, 0],
     y: [0, -18, 0],
     scale: 1.08,
-    transition: { duration: 0.6, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 0.6, ease: easeInOut, repeat: Infinity }
   },
   cunning: {
     rotate: [0, 2, -2, 0],
     y: [0, -8, 0],
     scale: 1.03,
-    transition: { duration: 4, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 4, ease: easeInOut, repeat: Infinity }
   },
   sarcastic: {
     rotate: [0, 1.2, -1.2, 0],
     y: [0, -4, 0],
     scale: 1.02,
-    transition: { duration: 3.5, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 3.5, ease: easeInOut, repeat: Infinity }
   },
   curious: {
     rotate: [0, 3.5, -1.6, 0],
     y: [0, -10, 0],
     scale: 1.05,
-    transition: { duration: 0.9, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 0.9, ease: easeInOut, repeat: Infinity }
   },
   angry: {
     rotate: [0, 8, 0],
     y: [0, -12, 0],
     scale: 1.06,
-    transition: { duration: 0.5, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 0.5, ease: easeInOut, repeat: Infinity }
   },
   happy: {
     rotate: [0, 2, -2, 0],
     y: [0, -14, 0],
     scale: 1.1,
-    transition: { duration: 0.8, ease: 'easeInOut', repeat: Infinity }
+    transition: { duration: 0.8, ease: easeInOut, repeat: Infinity }
   }
 }
 
@@ -74,11 +74,12 @@ const nextMood = (current: Mood, target?: Mood): Mood => {
 }
 
 export function AnimatedLucy() {
-  const rootRef = useRef<HTMLDivElement | null>(null)
+  const rootRef = useRef<HTMLDivElement>(null!)
   const [mood, setMood] = useState<'idle' | 'excited' | 'cunning' | 'sarcastic' | 'curious' | 'angry' | 'happy'>('cunning')
   const [showThought, setShowThought] = useState(false)
 
   const reducedMotion = useReducedMotion()
+  const lucyRef = useRef<HTMLDivElement>(null!)
   const { x: followX, y: followY } = useFollowCursor(rootRef, { maxDistance: 6 })
 
   useEffect(() => {
