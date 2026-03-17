@@ -1,15 +1,11 @@
+# Vercel Web Analytics
+
 ![Analytics](https://github.com/vercel/analytics/blob/main/.github/banner.png)
 
-<div align="center"><strong>Vercel Web Analytics</strong></div>
-<div align="center">Privacy-friendly, real-time traffic insights</div>
-<br />
-<div align="center">
-<a href="https://vercel.com/analytics">Website</a>
-<span> · </span>
-<a href="https://vercel.com/docs/concepts/analytics/package">Documentation</a>
-<span> · </span>
-<a href="https://twitter.com/vercel">Twitter</a>
-</div>
+**Vercel Web Analytics**  
+Privacy-friendly, real-time traffic insights
+
+[Website](https://vercel.com/analytics) · [Documentation](https://vercel.com/docs/concepts/analytics/package) · [Twitter](https://twitter.com/vercel)
 
 ## Overview
 
